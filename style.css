@@ -1,16 +1,114 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 20px;
-    padding: 20px;
+    font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', Meiryo, Arial, sans-serif; /* フォントの指定 */
+    background-color: #f8f8f8; /* 背景色 */
+    color: #333; /* 文字色 */
+    line-height: 1.6; /* 行の高さ */
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    color: #333;
+header {
+    background-color: #4CAF50; /* ヘッダーの背景色 */
+    color: white; /* ヘッダーの文字色 */
+    padding: 20px 0;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影 */
 }
 
-p {
-    color: #666;
-    line-height: 1.6;
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1.1em;
+}
+
+main {
+    max-width: 800px; /* メインコンテンツの最大幅 */
+    margin: 30px auto; /* 中央寄せ */
+    padding: 20px;
+    background-color: white; /* メインコンテンツの背景色 */
+    border-radius: 8px; /* 角丸 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* 影 */
+}
+
+h2 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* 週ごとのナビゲーション（目次） */
+.week-navigation ul {
+    list-style: none; /* リストの点をなくす */
+    padding: 0;
+    display: flex; /* 横並びにする */
+    flex-wrap: wrap; /* 折り返し */
+    justify-content: center; /* 中央寄せ */
+    gap: 15px; /* アイテム間の隙間 */
+}
+
+.week-navigation li {
+    background-color: #e8f5e9; /* 背景色 */
+    border: 1px solid #c8e6c9; /* 枠線 */
+    border-radius: 5px; /* 角丸 */
+    transition: transform 0.2s ease-in-out; /* ホバー時のアニメーション */
+}
+
+.week-navigation li:hover {
+    transform: translateY(-3px); /* 少し上に移動 */
+}
+
+.week-navigation a {
+    display: block; /* ブロック要素にしてクリック領域を広げる */
+    padding: 15px 25px;
+    text-decoration: none; /* 下線をなくす */
+    color: #388E3C; /* 文字色 */
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* 各記事ページ共通のスタイル */
+.date {
+    text-align: center;
+    color: #777;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.content {
+    margin-bottom: 30px;
+}
+
+.page-navigation {
+    text-align: center;
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.page-navigation a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05em;
+    transition: color 0.3s ease;
+}
+
+.page-navigation a:hover {
+    color: #388E3C;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    background-color: #eee;
+    color: #555;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05); /* 影 */
 }
