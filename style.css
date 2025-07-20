@@ -3,15 +3,86 @@
    =================================================== */
 
 :root {
-    --accent-color: #17a2b8; /* アクセントカラー（ティールグリーン） */
-    --accent-color-light: #e8f7fa; /* 明るいアクセントカラー */
-    --accent-color-shadow: rgba(23, 162, 184, 0.1); /* 影の色 */
+    /* ---------------------------------- */
+    /* 色の変数を定義 (ライトモード)      */
+    /* ---------------------------------- */
+    /* アクセントカラー */
+    --accent-color: #17a2b8;
+    --accent-color-light: #e8f7fa;
+    --accent-color-shadow: rgba(23, 162, 184, 0.1);
+
+    /* 背景色 */
+    --background-color: #f7f7f7;
+    --background-surface: #ffffff; /* カードやヘッダーなど */
+    --background-disabled: #f7f7f7;
+
+    /* 文字色 */
+    --text-color-primary: #333;   /* 基本の文字色 */
+    --text-color-strong: #111;    /* 見出しなど強い文字 */
+    --text-color-secondary: #666; /* サブテキストなど */
+    --text-color-subtle: #777;    /* さらに薄い文字 */
+    --text-color-disabled: #999;
+    --text-color-accent: var(--accent-color);
+    --text-color-inverse: #ffffff;
+
+    /* フッターの色 */
+    --footer-background: #333;
+    --footer-text: #ccc;
+    --footer-link-hover: #ffffff;
+
+    /* その他 */
+    --border-color: #eee;
+    --border-color-interactive: #ddd;
+    --shadow-color-light: rgba(0, 0, 0, 0.05);
+    --shadow-color-medium: rgba(0, 0, 0, 0.07);
+    --shadow-color-strong: rgba(0, 0, 0, 0.1);
+    --scrollbar-track-color: #f0f0f0;
+    --scrollbar-thumb-color: #ccc;
+    --scrollbar-thumb-hover-color: #aaa;
 }
+
+@media (prefers-color-scheme: dark) {
+    /* ---------------------------------- */
+    /* ダークモード時の色を上書き         */
+    /* ---------------------------------- */
+    :root {
+        /* 背景色 */
+        --background-color: #121212;
+        --background-surface: #1e1e1e;
+        --background-disabled: #2a2a2a;
+
+        /* 文字色 */
+        --text-color-primary: #e0e0e0;
+        --text-color-strong: #ffffff;
+        --text-color-secondary: #a0a0a0;
+        --text-color-subtle: #888888;
+        --text-color-disabled: #666;
+        --text-color-inverse: #121212;
+        
+        /* フッターの色は同じでOK */
+
+        /* その他 */
+        --border-color: #333;
+        --border-color-interactive: #444;
+        --shadow-color-light: rgba(255, 255, 255, 0.03);
+        --shadow-color-medium: rgba(255, 255, 255, 0.05);
+        --shadow-color-strong: rgba(255, 255, 255, 0.07);
+        --scrollbar-track-color: #2a2a2a;
+        --scrollbar-thumb-color: #555;
+        --scrollbar-thumb-hover-color: #777;
+    }
+
+    /* 画像の明るさを少し抑えて、ダークモードに馴染ませる */
+    img {
+        filter: brightness(.85) contrast(1.1);
+    }
+}
+
 
 body {
     font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Segoe UI', Arial, sans-serif;
-    background-color: #f7f7f7; 
-    color: #333;
+    background-color: var(--background-color); 
+    color: var(--text-color-primary);
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -25,13 +96,13 @@ body {
    ヘッダー
    =================================================== */
 header {
-    background-color: #ffffff;
+    background-color: var(--background-surface);
     padding: 15px 30px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid #eee;
+    box-shadow: 0 1px 3px var(--shadow-color-light);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
-    z-index: 1000; /* 【修正②】重なり順を明確に指定 */
+    z-index: 1000;
     width: 100%;
     box-sizing: border-box;
     transition: transform 0.3s ease-in-out;
@@ -53,7 +124,7 @@ header {
     margin: 0;
     font-size: 1.8em;
     font-weight: 700;
-    color: #111;
+    color: var(--text-color-strong);
 }
 
 .header-left h1 a {
@@ -64,7 +135,7 @@ header {
 .header-left p {
     margin: 2px 0 0;
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-color-secondary);
 }
 
 .main-nav ul {
@@ -79,7 +150,7 @@ header {
 .nav-button,
 .view-all {
     text-decoration: none;
-    color: var(--accent-color);
+    color: var(--text-color-accent);
     font-size: 0.95em;
     font-weight: bold;
     padding: 8px 16px;
@@ -92,7 +163,7 @@ header {
 .nav-button:hover,
 .view-all:hover {
     background-color: var(--accent-color);
-    color: #fff;
+    color: var(--text-color-inverse);
 }
 
 
@@ -121,7 +192,6 @@ main {
     width: 100%;
     padding: 40px 0;
     flex-grow: 1;
-    /* 【修正②】重なり順の問題を解決するため */
     position: relative;
     z-index: 1;
 }
@@ -141,7 +211,7 @@ main {
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 20px;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 10px;
 }
 
@@ -152,7 +222,7 @@ main {
 
 .section-header h2 a {
     text-decoration: none;
-    color: #222;
+    color: var(--text-color-strong);
     transition: color 0.3s;
 }
 
@@ -170,9 +240,9 @@ main {
 }
 
 .scroll-container::-webkit-scrollbar { height: 8px; }
-.scroll-container::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 4px; }
-.scroll-container::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
-.scroll-container::-webkit-scrollbar-thumb:hover { background: #aaa; }
+.scroll-container::-webkit-scrollbar-track { background: var(--scrollbar-track-color); border-radius: 4px; }
+.scroll-container::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb-color); border-radius: 4px; }
+.scroll-container::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover-color); }
 
 .articles-row {
     display: flex;
@@ -185,9 +255,9 @@ main {
 .week-card {
     flex: 0 0 300px;
     width: 300px;
-    background-color: white;
+    background-color: var(--background-surface);
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 2px 8px var(--shadow-color-medium);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
@@ -197,7 +267,7 @@ main {
 
 .week-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 16px var(--shadow-color-strong);
 }
 
 .week-card a {
@@ -210,7 +280,7 @@ main {
     width: 100%;
     height: 170px;
     overflow: hidden;
-    background-color: #eee;
+    background-color: var(--border-color);
 }
 
 .week-card .thumbnail img {
@@ -232,7 +302,7 @@ main {
     margin-top: 0;
     margin-bottom: 8px;
     font-size: 1.15em;
-    color: #222;
+    color: var(--text-color-strong);
     line-height: 1.4;
     min-height: 2.8em; 
     display: -webkit-box;
@@ -243,7 +313,7 @@ main {
 
 .week-card .card-content .author {
     font-size: 0.85em;
-    color: #777;
+    color: var(--text-color-subtle);
     margin-top: 10px;
 }
 
@@ -253,9 +323,9 @@ main {
 .article-container {
     max-width: 720px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: var(--background-surface);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px var(--shadow-color-light);
     padding: 0;
     overflow: hidden;
 }
@@ -263,7 +333,7 @@ main {
 .article-main-image {
     width: 100%;
     height: 300px;
-    background-color: #eee;
+    background-color: var(--border-color);
 }
 
 .article-main-image img {
@@ -276,7 +346,7 @@ main {
 .article-header {
     text-align: center;
     margin-bottom: 40px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     padding: 30px 60px;
 }
 
@@ -287,7 +357,7 @@ main {
 
 .article-meta {
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-color-secondary);
 }
 .article-meta a {
     color: var(--accent-color);
@@ -300,7 +370,7 @@ main {
 .article-content {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #333;
+    color: var(--text-color-primary);
     padding: 0 60px;
 }
 
@@ -326,7 +396,7 @@ main {
     display: block;
     margin: 40px auto;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px var(--shadow-color-strong);
 }
 
 .article-content ul {
@@ -338,7 +408,7 @@ main {
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-color);
     gap: 20px;
     padding: 30px 60px;
 }
@@ -348,10 +418,10 @@ main {
 .post-navigation a, .nav-link-disabled {
     display: block;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color-interactive);
     border-radius: 8px;
     text-decoration: none;
-    color: #333;
+    color: var(--text-color-primary);
     transition: all 0.3s ease;
 }
 
@@ -366,7 +436,7 @@ main {
 .post-navigation span {
     display: block;
     font-size: 0.85em;
-    color: #666;
+    color: var(--text-color-secondary);
     margin-bottom: 8px;
 }
 
@@ -377,10 +447,13 @@ main {
 }
 
 .nav-link-disabled {
-    background-color: #f7f7f7;
+    background-color: var(--background-disabled);
     cursor: not-allowed;
 }
-.nav-link-disabled h3 { color: #999; font-weight: normal; }
+.nav-link-disabled h3 { 
+    color: var(--text-color-disabled); 
+    font-weight: normal; 
+}
 
 
 /* ===================================================
@@ -393,10 +466,10 @@ main {
 }
 
 .archive-header {
-    position: static; /* 意図しない固定表示を解除し、通常通りスクロールさせる */
+    position: static;
     text-align: left;
     margin-bottom: 40px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 20px;
 }
 
@@ -418,16 +491,14 @@ main {
 
 .archive-description {
     font-size: 1em;
-    color: #555;
+    color: var(--text-color-secondary);
     margin: 0;
 }
 
 .articles-grid.archive-posts {
     display: grid;
-    /* [変更点①] 列が不必要に広がらないよう、カード幅に合わせます */
     grid-template-columns: repeat(auto-fit, 300px);
     gap: 30px;
-    /* [変更点②] グリッド全体をコンテナ内で中央揃えにします */
     justify-content: center;
 }
 
@@ -438,17 +509,18 @@ main {
     max-width: 600px;
     margin: 0 auto;
     padding: 30px 40px;
-    background-color: #fff;
+    background-color: var(--background-surface);
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px var(--shadow-color-medium);
     text-align: center;
     box-sizing: border-box;
 }
 
 .profile-header.simple {
     margin-bottom: 30px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 30px;
+    position: static; /* 強制的に固定を解除 */
 }
 
 .profile-avatar-wrapper { margin-bottom: 20px; }
@@ -458,20 +530,20 @@ main {
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #eee;
+    border: 3px solid var(--border-color);
 }
 
 .profile-info.simple { margin-top: 15px; }
 .profile-name { font-size: 1.6em; font-weight: bold; margin-bottom: 10px; }
-.profile-handle { font-size: 1em; color: #666; margin-top: 5px; margin-bottom: 15px; }
+.profile-handle { font-size: 1em; color: var(--text-color-secondary); margin-top: 5px; margin-bottom: 15px; }
 .profile-handle a { text-decoration: none; color: inherit; }
 .profile-handle a:hover { color: var(--accent-color); text-decoration: underline; }
-.profile-bio { font-size: 1em; color: #555; line-height: 1.6; margin-bottom: 15px; }
-.profile-meta-info { font-size: 0.9em; color: #777; }
+.profile-bio { font-size: 1em; color: var(--text-color-secondary); line-height: 1.6; margin-bottom: 15px; }
+.profile-meta-info { font-size: 0.9em; color: var(--text-color-subtle); }
 .profile-details { margin-top: 30px; text-align: left; }
 .detail-item { margin-bottom: 20px; }
 .detail-item h3 { font-size: 1.1em; font-weight: bold; margin-bottom: 8px; }
-.detail-item p { font-size: 1em; color: #333; margin: 0; }
+.detail-item p { font-size: 1em; color: var(--text-color-primary); margin: 0; }
 .detail-item a { color: var(--accent-color); text-decoration: none; }
 .detail-item a:hover { text-decoration: underline; }
 .detail-item i.fab { margin-right: 8px; }
@@ -493,12 +565,12 @@ main {
 }
 
 .memory-card {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: var(--background-surface);
+    border: 1px solid var(--border-color-interactive);
     border-radius: 8px;
     margin-bottom: 30px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 2px 8px var(--shadow-color-medium);
 }
 
 .memory-photo img {
@@ -509,7 +581,7 @@ main {
 
 .memory-card-footer { padding: 15px; }
 .memory-caption { margin: 0 0 10px; font-size: 1em; }
-.memory-date { font-size: 0.8em; color: #999; }
+.memory-date { font-size: 0.8em; color: var(--text-color-disabled); }
 
 /* ===================================================
    フッター
@@ -518,8 +590,8 @@ footer {
     text-align: center;
     padding: 25px 30px;
     margin-top: auto;
-    background-color: #333;
-    color: #ccc;
+    background-color: var(--footer-background);
+    color: var(--footer-text);
     font-size: 0.85em;
 }
 
@@ -534,11 +606,11 @@ footer {
 
 .footer-nav a {
     text-decoration: none;
-    color: #eee;
+    color: var(--footer-text);
     transition: color 0.3s ease;
 }
 
-.footer-nav a:hover { color: white; }
+.footer-nav a:hover { color: var(--footer-link-hover); }
 
 /* ===================================================
    【追加修正】スマートフォン向け表示の微調整
@@ -546,63 +618,21 @@ footer {
 @media screen and (max-width: 768px) {
 
     /* --- 1. 文字サイズの最適化 --- */
-    /* 文字が大きすぎると感じられる部分を中心に、スマホでの可読性が高まるよう調整します */
+    .header-left h1 { font-size: 1.5em; }
+    .section-header h2 { font-size: 1.4em; }
+    .article-header h1 { font-size: 1.9em; line-height: 1.4; }
+    .article-content h2 { font-size: 1.5rem; }
+    .article-content { font-size: 1.0rem; padding: 0 40px; }
+    .post-navigation h3 { font-size: 1.0em; }
+    .profile-name { font-size: 1.5em; }
 
-    /* ヘッダーのサイトタイトル */
-    .header-left h1 {
-        font-size: 1.5em; /* 少し小さくしてバランスを調整 */
+    /* --- 2. 各種調整 --- */
+    .detail-item a i {
+        margin-right: 0.6em;
+        width: 20px;
     }
 
-    /* トップページのセクション見出し (「新着記事」など) */
-    .section-header h2 {
-        font-size: 1.4em;
+    .profile-bio {
+        text-align: center;
     }
-    
-    /* 記事ページのメインタイトル */
-    .article-header h1 {
-        font-size: 1.9em; /* スマホでは大きすぎるため、サイズを抑制 */
-        line-height: 1.4; /* 行間を少し広げて読みやすく */
-    }
-
-    /* 記事ページの中見出し */
-    .article-content h2 {
-        font-size: 1.5rem;
-    }
-    
-    /* 記事ページの本文 */
-    .article-content {
-        font-size: 1.0rem; /* 1.1remから少しだけ縮小 */
-        padding: 0 40px; /* 左右の余白も少し詰めて読みやすく */
-    }
-
-    /* 記事ページ下部のナビゲーションのタイトル (長いタイトルでの改行を防ぐ) */
-    .post-navigation h3 {
-        font-size: 1.0em;
-    }
-    
-    /* プロフィールページの著者名 */
-    .profile-name {
-        font-size: 1.5em;
-    }
-
-
-
-/* プロフィールページのContactアイコンと文字の間隔を調整 */
-.detail-item a i {
-    /* アイコンの右側に適度なスペースを追加します */
-    margin-right: 0.6em;
-
-    /* アイコンの占める幅を固定して、文字の開始位置を揃えます */
-    width: 20px;
-}
-
-/* プロフィールの自己紹介文を中央揃えにする */
-.profile-bio {
-    text-align: center;
-}
-}
-
-/* プロフィールページの上部が固定される問題を強制的に修正 */
-.profile-header.simple {
-    position: static;
 }
