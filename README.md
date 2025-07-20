@@ -2,7 +2,7 @@
 
 ## URL
 
-**[https://shunsukeou.github.io/GlobalVolunteerDiary/]((https://shunsukeou.github.io/GlobalVolunteerDiary/)**
+**https://shunsukeou.github.io/GlobalVolunteerDiary/**
 
 ## Tech Stack
 
