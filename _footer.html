@@ -2,22 +2,16 @@
     <div class="footer-container">
         <nav class="footer-nav">
             </nav>
-
-        <div class="visitor-counter">
-            <p>Visit counts: <span id="visitor-count">...</span> 人</p>
-        </div>
-
-        <div class="footer-legal">
-            <p>&copy; 2025 Shunsuke Taira. All rights reserved.</p>
-        </div>
+      <div class="visitor-counter">
+          <p>Visit Counts: <span id="visitor-count">...</span></p>
+      </div>
     </div>
 </footer>
 
+
 <script>
     function getVisitorCount() {
-        // あなたのサイト専用のAPI URL
         const apiUrl = 'https://api.countapi.xyz/hit/shunsukeou.github.io/MyDiary-Nepal/visits';
-
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
@@ -28,13 +22,8 @@
             })
             .catch(error => {
                 console.error('カウンターの取得に失敗しました:', error);
-                const countElement = document.getElementById('visitor-count');
-                if (countElement) {
-                    countElement.textContent = '-';
-                }
             });
     }
-
-    // ページが読み込まれたら関数を実行
-    getVisitorCount();
+    // ページ読み込み完了後に実行
+    document.addEventListener('DOMContentLoaded', getVisitorCount);
 </script>

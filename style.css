@@ -546,7 +546,6 @@ main {
 .detail-item p { font-size: 1em; color: var(--text-color-primary); margin: 0; }
 .detail-item a { color: var(--accent-color); text-decoration: none; }
 .detail-item a:hover { text-decoration: underline; }
-.detail-item i.fab { margin-right: 8px; }
 
 /* ===================================================
    Memory Pics ページ (`memory-pics.html`)
