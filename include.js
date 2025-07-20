@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function() {
  * 訪問者カウンターを取得して表示する関数
  */
 function getVisitorCount() {
-    const apiUrl = 'https://api.countapi.xyz/hit/shunsukeou.github.io/MyDiary-Nepal/visits';
+    // ▼▼▼ このURLを新しいサービスのものに書き換えるだけ！ ▼▼▼
+    const apiUrl = 'https://hit-counter.io/client/hit?url=https://shunsukeou.github.io/MyDiary-Nepal/';
 
     fetch(apiUrl)
         .then(response => {
@@ -35,7 +36,8 @@ function getVisitorCount() {
         .then(data => {
             const countElement = document.getElementById('visitor-count');
             if (countElement) {
-                countElement.textContent = Number(data.value).toLocaleString();
+                // 'data.value' から 'data.hits' に変更
+                countElement.textContent = Number(data.hits).toLocaleString();
             }
         })
         .catch(error => {
