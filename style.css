@@ -239,10 +239,20 @@ main {
     -webkit-overflow-scrolling: touch;
 }
 
-.scroll-container::-webkit-scrollbar { height: 8px; }
-.scroll-container::-webkit-scrollbar-track { background: var(--scrollbar-track-color); border-radius: 4px; }
-.scroll-container::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb-color); border-radius: 4px; }
-.scroll-container::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover-color); }
+.scroll-container::-webkit-scrollbar { 
+    height: 8px; 
+}
+.scroll-container::-webkit-scrollbar-track { 
+    background: var(--scrollbar-track-color); 
+    border-radius: 4px; 
+}
+.scroll-container::-webkit-scrollbar-thumb { 
+    background: var(--scrollbar-thumb-color); 
+    border-radius: 4px; 
+}
+.scroll-container::-webkit-scrollbar-thumb:hover { 
+    background: var(--scrollbar-thumb-hover-color); 
+}
 
 .articles-row {
     display: flex;
@@ -413,7 +423,9 @@ main {
     padding: 30px 60px;
 }
 
-.nav-link-prev, .nav-link-next { flex: 1; }
+.nav-link-prev, .nav-link-next { 
+    flex: 1; 
+}
 
 .post-navigation a, .nav-link-disabled {
     display: block;
@@ -431,7 +443,9 @@ main {
     transform: translateY(-3px);
 }
 
-.nav-link-next { text-align: right; }
+.nav-link-next { 
+    text-align: right; 
+}
 
 .post-navigation span {
     display: block;
@@ -523,7 +537,9 @@ main {
     position: static; /* 強制的に固定を解除 */
 }
 
-.profile-avatar-wrapper { margin-bottom: 20px; }
+.profile-avatar-wrapper { 
+    margin-bottom: 20px; 
+}
 
 .profile-avatar {
     width: 100px;
@@ -533,19 +549,65 @@ main {
     border: 3px solid var(--border-color);
 }
 
-.profile-info.simple { margin-top: 15px; }
-.profile-name { font-size: 1.6em; font-weight: bold; margin-bottom: 10px; }
-.profile-handle { font-size: 1em; color: var(--text-color-secondary); margin-top: 5px; margin-bottom: 15px; }
-.profile-handle a { text-decoration: none; color: inherit; }
-.profile-handle a:hover { color: var(--accent-color); text-decoration: underline; }
-.profile-bio { font-size: 1em; color: var(--text-color-secondary); line-height: 1.6; margin-bottom: 15px; }
-.profile-meta-info { font-size: 0.9em; color: var(--text-color-subtle); }
-.profile-details { margin-top: 30px; text-align: left; }
-.detail-item { margin-bottom: 20px; }
-.detail-item h3 { font-size: 1.1em; font-weight: bold; margin-bottom: 8px; }
-.detail-item p { font-size: 1em; color: var(--text-color-primary); margin: 0; }
-.detail-item a { color: var(--accent-color); text-decoration: none; }
-.detail-item a:hover { text-decoration: underline; }
+.profile-info.simple { 
+    margin-top: 15px; 
+}
+.profile-name { 
+    font-size: 1.6em; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+}
+.profile-handle { 
+    font-size: 1em; 
+    color: var(--text-color-secondary); 
+    margin-top: 5px; 
+    margin-bottom: 15px; 
+}
+.profile-handle a { 
+    text-decoration: none; 
+    color: inherit; 
+}
+.profile-handle a:hover { 
+    color: var(--accent-color); 
+    text-decoration: underline; 
+}
+.profile-bio { 
+    font-size: 1em; 
+    color: var(--text-color-secondary); 
+    line-height: 1.6; 
+    margin-bottom: 15px; 
+}
+.profile-meta-info { 
+    font-size: 0.9em; 
+    color: var(--text-color-subtle); 
+}
+.profile-details { 
+    margin-top: 30px; 
+    text-align: left; 
+}
+.detail-item { 
+    margin-bottom: 20px; 
+}
+.detail-item h3 { 
+    font-size: 1.1em; 
+    font-weight: bold; 
+    margin-bottom: 8px; 
+}
+.detail-item p { 
+    font-size: 1em; 
+    color: var(--text-color-primary); 
+    margin: 0; 
+}
+.detail-item a { 
+    color: var(--accent-color); 
+    text-decoration: none; 
+}
+.detail-item a:hover { 
+    text-decoration: underline; 
+}
+.detail-item i.fab { 
+    margin-right: 8px; 
+}
 
 /* ===================================================
    Memory Pics ページ (`memory-pics.html`)
@@ -578,9 +640,17 @@ main {
     display: block;
 }
 
-.memory-card-footer { padding: 15px; }
-.memory-caption { margin: 0 0 10px; font-size: 1em; }
-.memory-date { font-size: 0.8em; color: var(--text-color-disabled); }
+.memory-card-footer { 
+    padding: 15px; 
+}
+.memory-caption { 
+    margin: 0 0 10px; 
+    font-size: 1em; 
+}
+.memory-date { 
+    font-size: 0.8em; 
+    color: var(--text-color-disabled); 
+}
 
 /* ===================================================
    フッター
@@ -609,7 +679,9 @@ footer {
     transition: color 0.3s ease;
 }
 
-.footer-nav a:hover { color: var(--footer-link-hover); }
+.footer-nav a:hover { 
+    color: var(--footer-link-hover); 
+}
 
 /* ===================================================
    【追加修正】スマートフォン向け表示の微調整
