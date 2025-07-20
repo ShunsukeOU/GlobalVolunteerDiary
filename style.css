@@ -601,3 +601,8 @@ footer {
     text-align: center;
 }
 }
+
+/* プロフィールページの上部が固定される問題を強制的に修正 */
+.profile-header.simple {
+    position: static;
+}
