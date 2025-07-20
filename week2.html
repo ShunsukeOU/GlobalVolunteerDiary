@@ -3,27 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>私の留学記 - 1週目</title>
+    <title>2週目 - My GV Diary</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>1週目: はじまり</h1>
-        <p class="date">2025年7月19日</p>
-    </header>
 
-    <main>
-        <section class="content">
-            <p>ここに1週目の内容が入ります。</p>
-            <p>テキストや画像などを追加して、記事を作成してください。</p>
-        </section>
-        <nav class="page-navigation">
-            <p><a href="index.html">目次へ戻る</a></p>
-            </nav>
-    </main>
+<header>
+    <div class="header-content">
+        <div class="header-left">
+            <h1><a href="index.html">My GV Diary</a></h1>
+            <p>渡航の記録</p>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="memory-pics.html" class="nav-button">Memory Pics</a></li>
+                <li>
+                    <a href="about.html" class="profile-icon-link">
+                        <img src="images/myicon.jpeg" alt="Author" class="profile-icon">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-    <footer>
-        <p>&copy; 2025 My Global Volunteer Diary</p>
-    </footer>
-</body>
+<main>
+    <div class="article-container">
+        <article>
+            <div class="article-main-image">
+                <img src="images/IMG_7519.JPG" alt="2週目の活動風景">
+            </div>
+
+            <header class="article-header">
+                <h1>2週目: 2週目</h1>
+                <p class="article-meta">
+                    <time datetime="2025-07-20">2025.07.20</time> by <a href="about.html">ShunsukeOU</a>
+                </p>
+            </header>
+
+            <div class="article-content">
+                <p>記事の最初に書く一言</p>
+                <p>サンプル</p>
+                <h2>小見出し</h2>
+                <p>サンプル</p>
+                <ul>
+                    <li>リスト項目1</li>
+                    <li>リスト項目2</li>
+                    <li>リスト項目3</li>
+                </ul>
+                <p>最後に書く一言</p>
+            </div>
+        </article>
+
+        <nav class="post-navigation">
+            <div class="nav-link-prev">
+                <a href="week1.html">
+                    <span>前の記事</span>
+                    <h3>1週目: はじまり</h3>
+                </a>
+            </div>
+            <div class="nav-link-next">
+                <a href="week3.html">
+                    <span>次の記事</span>
+                    <h3>3週目: 3</h3>
+                </a>
+            </div>
+        </nav>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Shunsuke Taira</p>
+    <nav class="footer-nav"></nav>
+</footer>
+
+<script>
+    const header = document.querySelector('header');
+    const triggerImage = document.querySelector('.article-main-image');
+    let lastScrollTop = 0;
+
+    // 記事ページにメイン画像がある場合のみ実行
+    if (header && triggerImage) {
+        // ヘッダーを隠し始めるスクロール位置を計算（画像の上端 - ヘッダーの高さ）
+        const triggerPosition = triggerImage.offsetTop - header.offsetHeight;
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // 下にスクロールしていて、かつトリガー位置を越えたらヘッダーを隠す
+            if (scrollTop > lastScrollTop && scrollTop > triggerPosition) {
+                header.classList.add('header-hidden');
+            } else {
+                // 上にスクロールしたらヘッダーを表示
+                header.classList.remove('header-hidden');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        }, false);
+    }
+</script>
+
+
 </html>
