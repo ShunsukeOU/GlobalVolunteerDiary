@@ -106,26 +106,31 @@
 <footer id="footer-placeholder"></footer>
 <script src="include.js"></script>
 
-    <script>
-        function getVisitorCount() {
-            // [ ] の部分を、あなたのサイトのURLなどに書き換えてください。
-            // 例： 'ShunsukeOU.github.io/Nepal-Journey'
-            const apiUrl = 'https://api.countapi.xyz/hit/shunsukeou.github.io/MyDiary-Nepal/visits';
+<script>
+    function getVisitorCount() {
+        // あなたのサイト専用の、正しいAPI URL
+        const apiUrl = 'https://api.countapi.xyz/hit/shunsukeou.github.io/MyDiary-Nepal/visits';
 
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    const countElement = document.getElementById('visitor-count');
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const countElement = document.getElementById('visitor-count');
+                if (countElement) {
                     countElement.textContent = data.value;
-                })
-                .catch(error => {
-                    console.error('カウンターの取得に失敗しました:', error);
-                    const countElement = document.getElementById('visitor-count');
+                }
+            })
+            .catch(error => {
+                console.error('カウンターの取得に失敗しました:', error);
+                const countElement = document.getElementById('visitor-count');
+                if (countElement) {
                     countElement.textContent = '-';
-                });
-        }
-        getVisitorCount();
-    </script>
+                }
+            });
+    }
+
+    // ページが読み込まれたら関数を実行
+    getVisitorCount();
+</script>
 
 </body>
 </html>
