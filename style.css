@@ -424,8 +424,11 @@ main {
 
 .articles-grid.archive-posts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px; /* 【修正①】隙間を調整 */
+    /* [変更点①] 列が不必要に広がらないよう、カード幅に合わせます */
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 30px;
+    /* [変更点②] グリッド全体をコンテナ内で中央揃えにします */
+    justify-content: center;
 }
 
 /* ===================================================
@@ -538,27 +541,68 @@ footer {
 .footer-nav a:hover { color: white; }
 
 /* ===================================================
-   【追記】レスポンシブ対応 (スマートフォン向け修正)
+   【追加修正】スマートフォン向け表示の微調整
    =================================================== */
 @media screen and (max-width: 768px) {
 
-    /* [ポイント①] 
-       スマホでの窮屈さをなくすため、セクション全体の左右の余白を少し調整します。*/
-    .content-section {
-        padding: 0 20px;
+    /* --- 1. 文字サイズの最適化 --- */
+    /* 文字が大きすぎると感じられる部分を中心に、スマホでの可読性が高まるよう調整します */
+
+    /* ヘッダーのサイトタイトル */
+    .header-left h1 {
+        font-size: 1.5em; /* 少し小さくしてバランスを調整 */
     }
 
-    /* [ポイント②] 
-       横スクロールコンテナの表示を美しく整えます。ここが今回の修正の中心です。*/
-    .scroll-container {
-        /* 1. 親要素(.content-section)のpadding(20px)をネガティブマージンで打ち消し、
-              コンテナを画面の左右いっぱいまで広げます。*/
-        margin-left: -20px;
-        margin-right: -20px;
+    /* トップページのセクション見出し (「新着記事」など) */
+    .section-header h2 {
+        font-size: 1.4em;
+    }
+    
+    /* 記事ページのメインタイトル */
+    .article-header h1 {
+        font-size: 1.9em; /* スマホでは大きすぎるため、サイズを抑制 */
+        line-height: 1.4; /* 行間を少し広げて読みやすく */
+    }
 
-        /* 2. 元の上下padding(10px, 20px)を維持しつつ、左右に新たなpadding(20px)を追加します。
-              これにより、スクロールするカードの左端がセクションタイトルと自然に揃い、
-              右端にもスクロールした際に適切な余白が生まれます。*/
-        padding: 10px 20px 20px 20px;
+    /* 記事ページの中見出し */
+    .article-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* 記事ページの本文 */
+    .article-content {
+        font-size: 1.0rem; /* 1.1remから少しだけ縮小 */
+        padding: 0 40px; /* 左右の余白も少し詰めて読みやすく */
+    }
+
+    /* 記事ページ下部のナビゲーションのタイトル (長いタイトルでの改行を防ぐ) */
+    .post-navigation h3 {
+        font-size: 1.0em;
+    }
+    
+    /* プロフィールページの著者名 */
+    .profile-name {
+        font-size: 1.5em;
+    }
+
+
+    /* --- 2. プロフィールページのスクロール挙動の調整 --- */
+    /* プロフィールページのメインコンテンツ部分のスタイルを調整 */
+    .profile-page-container.simple {
+        /*
+         * [ポイント] コンテンツが少ない場合でも、意図的に縦の領域を確保します。
+         * これにより、ページが常にスクロール可能になり、ヘッダーを隠すなどの
+         * 他のページと同じスクロール体験が生まれます。
+         *
+         * 65vhは「画面の高さの65%」を意味し、フッターとの間に適度な空間を作ります。
+         */
+        min-height: 65vh;
+        
+        /* * コンテンツが上下に引き伸ばされず、中央に美しく配置されるように
+         * flexboxのプロパティを追加します。
+         */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
