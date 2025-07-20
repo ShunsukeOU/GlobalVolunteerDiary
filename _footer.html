@@ -1,51 +1,14 @@
 <footer>
     <div class="footer-container">
         <nav class="footer-nav">
-            <ul>
-                </ul>
-        </nav>
+            </nav>
 
         <div class="visitor-counter">
             <p>Visitors: <span id="visitor-count">...</span></p>
         </div>
 
         <div class="copyright">
-            <p>&copy; 2025 Shunsuke Taira</p>
+            <p>&copy; 2025 Your Name. All Rights Reserved.</p>
         </div>
     </div>
 </footer>
-
-<script>
-    function getVisitorCount() {
-        // shunsukeou.github.io/MyDiary-Nepal というキーでカウントを取得
-        const apiUrl = 'https://api.countapi.xyz/hit/shunsukeou.github.io/MyDiary-Nepal/visits';
-
-        fetch(apiUrl)
-            .then(response => {
-                // エラーレスポンスが返ってきた場合も考慮
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const countElement = document.getElementById('visitor-count');
-                if (countElement) {
-                    // 3桁ごとにカンマを入れると見やすいです
-                    countElement.textContent = Number(data.value).toLocaleString();
-                }
-            })
-            .catch(error => {
-                console.error('Visitor counter failed to load:', error);
-                // エラーが起きた場合は表示を書き換える
-                const countElement = document.getElementById('visitor-count');
-                if (countElement) {
-                    countElement.textContent = 'N/A';
-                }
-            });
-    }
-
-    // このスクリプトはフッターのHTMLと一緒に追加されるので、
-    // DOMContentLoadedを待つ必要はなく、すぐに実行してOKです。
-    getVisitorCount();
-</script>
